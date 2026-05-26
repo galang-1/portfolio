@@ -697,3 +697,26 @@ function initLightbox() {
     frame.style.transform = '';
   });
 })();
+
+/* ═══════════════════════════════════════════════════
+   28. FIX: Resize canvas on orientation change
+   & clamp particles within viewport bounds
+   ═══════════════════════════════════════════════════ */
+(function fixCanvasOverflow() {
+  const canvas = document.getElementById('particleCanvas');
+  if (!canvas) return;
+
+  function clampCanvas() {
+    canvas.style.width  = window.innerWidth  + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  window.addEventListener('resize', clampCanvas, { passive: true });
+  window.addEventListener('orientationchange', () => {
+    setTimeout(clampCanvas, 200);
+  });
+
+  clampCanvas();
+})();
