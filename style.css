@@ -1577,3 +1577,43 @@ input, textarea, button { font-family: inherit; }
     transform: none !important;
   }
 }
+
+/* ═══════════════════════════════════════════════════
+   FIX: Hero title kembali 3 baris terpisah
+   ═══════════════════════════════════════════════════ */
+.hero-title {
+  font-size: clamp(3.5rem, 9vw, 10rem);
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.hero-title .title-line {
+  display: block !important;
+  white-space: nowrap;
+  font-size: inherit;
+}
+
+.hero-title .title-line.italic {
+  padding-left: clamp(1rem, 4vw, 3rem);
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(2.6rem, 11vw, 4rem);
+  }
+  .hero-title .title-line {
+    white-space: nowrap;
+    display: block !important;
+  }
+  .hero-title .title-line.italic {
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: clamp(2.2rem, 10vw, 3rem);
+  }
+}
